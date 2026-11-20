@@ -5,3 +5,51 @@ emp_id INT PRIMARY KEY,
 emp_name VARCHAR(50),
 city VARCHAR(30)
 )
+
+select * from employeeDetails
+
+ALTER TABLE employeeDetails ADD COLUMN mobileNumber VARCHAR(15)
+
+ALTER TABLE employeeDetails RENAME COLUMN mobileNumber TO phoneNumber
+
+ALTER TABLE employeeDetails MODIFY COLUMN phoneNumber VARCHAR(50)
+
+ALTER TABLE employeeDetails DROP COLUMN phoneNumber
+
+INSERT INTO employeeDetails VALUES (1, "Sathish", "Chennai")
+
+INSERT INTO employeeDetails VALUES (2, "Rahul", "Madurai"),
+(3, "Deva", "Chennai"),
+(4, "Abdul", "Trichy")
+
+select * from employeeDetails
+
+CREATE TABLE studentData(
+student_id int PRIMARY KEY,
+student_name VARCHAR(30),
+marks int,
+department VARCHAR(30)
+)
+
+INSERT INTO studentData VALUES (1, "Vignesh", 450, "EEE"),
+(2, "Deva", 420, "ECE"),
+(3, "Revanth", 380, "IT"),
+(4, "Arun", 470, "EEE")
+
+select * from studentData
+
+select * from studentData where marks > 450
+
+select * from studentData where marks < 400
+
+select student_name,department,marks from studentData where marks < 400
+
+select * from studentData where marks > 450 and department = "EEE" 
+
+select * from studentData where marks > 450 and department in ("EEE", "ECE")
+
+
+
+
+
+
