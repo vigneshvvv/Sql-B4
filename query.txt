@@ -79,20 +79,51 @@ salary DECIMAL(10,2) DEFAULT 10000,
 department VARCHAR(20)
 )
 
-INSERT INTO employeeData (id, emp_name,salary,department) VALUES (2,"Deva",50000,"Testing"),
+INSERT INTO employeeData (id, emp_name,salary,department) VALUES (5,"Pandi",60000,"DEV"),
 (3, "Abdul","70000", "Cloud"),
 (4, "Arvind", 50000, "SprintEngineer")
 
 select * from employeeData
 
+select MAX(salary) from employeeData
+
+select MIN(salary) from employeeData
+
+select SUM(salary) from employeeData
+
+select AVG(salary) from employeeData
+
+select * from employeeData where salary = 70000
+
+select * from employeeData where salary = (select MAX(salary) from employeeData)
+
+select count(*) as noOfEmployees from employeeData where department = "DEV"
+
+CREATE TABLE employeeDataSet (
+id int PRIMARY KEY,
+emp_name VARCHAR(30) NOT NULL,
+salary DECIMAL(10,2) DEFAULT 10000,
+department VARCHAR(20),
+place VARCHAR(30)
+)
+
+select * from employeeDataSet
+
+INSERT INTO employeeDataSet VALUES (1, "Arvind", 30000, "DEV", "Chennai"), (2, "Abdul", 50000, "Cloud", "Delhi"),
+(3, "Revanth", "80000", "DEV", "Madurai"), (4, "Guru", 60000, "TESTING", "chennai")
 
 
+select department, count(*) as noOFEmployees from employeeDataSet group by department
 
+select place, count(*) as emp from employeeDataSet group by place
 
+select department, SUM(salary) as totalSalary from employeeDataSet group by department
 
+select department, count(*) as noOfEmp from employeeDataSet group by department
+order by noOfEmp DESC limit 1
 
-
-
+select department, count(*) as noOfEmployees from employeeDataSet group by department
+HAVING  noOfEmployees > 1
 
 
 
