@@ -214,6 +214,30 @@ select c.customer_name, count(o.order_id) as totalnoOfOrder from orderInfo o
 join customerData c ON c.customer_id = o.customer_id group by c.customer_name
 
 
+select * from customers
+
+select * from employeeDataSet
+
+select * from employeeDataSet where salary = (select MAX(salary) from employeeDataSet)
+
+select * from employeeDataSet where department in 
+(select department from employeeDataSet group by department HAVING count(*) > 1)
+
+select * from employeeDataSet where department NOT IN 
+(select department from employeeDataSet group by department HAVING count(*) > 1)
+
+select * from employeeDataSet where salary  > any (
+select salary from employeeDataSet where department = 'Cloud'
+)
+
+select department, AVG(salary) as avg_salary from employeeDataSet 
+group by department HAVING avg_salary > 50000
+
+select * from (
+select department, AVG(salary) as avg_salary from employeeDataSet 
+group by department 
+) as temp where avg_salary > 50000
+
 
 
 
